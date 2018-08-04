@@ -1,0 +1,7 @@
+# Rules
+- define forbidden words
+
+# Checks
+- Bilder-Check (PICxx)
+- Tabellen Captions
+- Bilder Captions
