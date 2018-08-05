@@ -5,3 +5,6 @@
 - Bilder-Check (PICxx)
 - Tabellen Captions
 - Bilder Captions
+
+# Others
+- Cleanup Word processes

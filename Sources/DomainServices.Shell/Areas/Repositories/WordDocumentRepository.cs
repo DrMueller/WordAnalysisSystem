@@ -16,9 +16,15 @@ namespace Mmu.Was.DomainServices.Shell.Areas.Repositories
             Microsoft.Office.Interop.Word.Application app = new Microsoft.Office.Interop.Word.Application();
             var wordDocument = app.Documents.Open(filePath);
 
-            var nativeWords = wordDocument.Words.Cast<object>().Select(w => w.ToString()).ToList();
+            var wordTexts = new List<string>();
 
-            return new WordDocument(nativeWords, null, null);
+            foreach(dynamic word in wordDocument.Content.Words)
+            {
+                wordTexts.Add(word.Text);
+            }
+
+
+            return new WordDocument(wordTexts, null, null);
         }
     }
 }

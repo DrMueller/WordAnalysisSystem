@@ -17,8 +17,8 @@ namespace Mmu.Was.Domain.Areas.Word
             ) 
         {
             Guard.ObjectNotNull(() => words);
-            Guard.ObjectNotNull(() => tables);
-            Guard.ObjectNotNull(() => graphics);
+            //Guard.ObjectNotNull(() => tables);
+            //Guard.ObjectNotNull(() => graphics);
 
             Words = words;
             Tables = tables;

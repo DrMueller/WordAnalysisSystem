@@ -55,6 +55,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Areas\Services\Implementation\RuleCheckService.cs" />
+    <Compile Include="Areas\Services\IRuleCheckService.cs" />
     <Compile Include="Areas\Services\RuleChecks\Implementation\ForbiddenWordsRuleCheckService.cs" />
     <Compile Include="Areas\Services\RuleChecks\IForbiddenWordsRuleCheckService.cs" />
     <Compile Include="Infrastructure\Ioc\DomainServicesRegistry.cs" />

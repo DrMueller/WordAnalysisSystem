@@ -2,6 +2,7 @@
 using Mmu.Was.Application.Areas.RuleChecking;
 using Mmu.Was.Domain.Areas;
 using Mmu.Was.Domain.Areas.Rulings;
+using Mmu.Was.DomainServices.Areas.Services;
 using Mmu.Was.DomainServices.Areas.Services.RuleChecks;
 using Mmu.Was.DomainServices.Repositories;
 using System;
@@ -15,21 +16,19 @@ namespace Mmu.Was.Application.Areas.Services.Implementation
     public class RuleCheckingService : IRuleCheckingService
     {
         private readonly IWordDocumentRepository _wordDocumentRepository;
-        private readonly IForbiddenWordsRuleCheckService _forbiddenWordsRuleCheckService;
+        private readonly IRuleCheckService _ruleCheckService;
 
         public RuleCheckingService(
             IWordDocumentRepository wordDocumentRepository,
-            IForbiddenWordsRuleCheckService forbiddenWordsRuleCheckService)
+            IRuleCheckService ruleCheckService)
         {
             _wordDocumentRepository = wordDocumentRepository;
-            _forbiddenWordsRuleCheckService = forbiddenWordsRuleCheckService;
+            _ruleCheckService = ruleCheckService;
         }
 
         public IReadOnlyCollection<RuleCheckResultDto> CheckRules(string wordFilePath)
         {
-            var wordDocoument = _wordDocumentRepository.Load(wordFilePath);
-            var checkResults = new List<RuleCheckResult>();
-            checkResults.Add(_forbiddenWordsRuleCheckService.CheckForbiddenWords(wordDocoument, ForbiddenWords.CreateDefault()));
+            var checkResults = _ruleCheckService.CheckRules(wordFilePath);
 
             var result = checkResults.Select(rs => new RuleCheckResultDto
             {
