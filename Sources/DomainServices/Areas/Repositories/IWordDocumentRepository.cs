@@ -1,15 +1,10 @@
-﻿using Mmu.Was.Domain.Areas;
+﻿using System.Threading.Tasks;
 using Mmu.Was.Domain.Areas.Word;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Mmu.Was.DomainServices.Repositories
+namespace Mmu.Was.DomainServices.Areas.Repositories
 {
     public interface IWordDocumentRepository
     {
-        WordDocument Load(string filePath);
+        Task<WordDocument> LoadAsync(string filePath);
     }
 }

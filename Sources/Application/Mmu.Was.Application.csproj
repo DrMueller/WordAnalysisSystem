@@ -27,6 +27,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>..\..\..\..\..\Users\matthias.mueller\Desktop\Stuff\Work\FIFA\IFES\Tools\Syndication3TestSystem\CA_ProductionCode.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -37,17 +38,34 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Mmu.Mlh.ApplicationExtensions, Version=1.0.33.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Mmu.Mlh.ApplicationExtensions.1.0.33\lib\netstandard2.0\Mmu.Mlh.ApplicationExtensions.dll</HintPath>
+    </Reference>
     <Reference Include="Mmu.Mlh.DomainExtensions, Version=1.0.14.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Mmu.Mlh.DomainExtensions.1.0.14\lib\netstandard2.0\Mmu.Mlh.DomainExtensions.dll</HintPath>
     </Reference>
     <Reference Include="Mmu.Mlh.LanguageExtensions, Version=1.2.14.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Mmu.Mlh.LanguageExtensions.1.2.14\lib\netstandard2.0\Mmu.Mlh.LanguageExtensions.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NLog.4.5.6\lib\net45\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="StructureMap, Version=4.6.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\StructureMap.4.6.1\lib\net45\StructureMap.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -58,7 +76,9 @@
   <ItemGroup>
     <Compile Include="Areas\Dtos\RuleCheckResultDto.cs" />
     <Compile Include="Areas\Services\Implementation\RuleCheckingService.cs" />
+    <Compile Include="Areas\Services\Implementation\WordDocumentService.cs" />
     <Compile Include="Areas\Services\IRuleCheckingService.cs" />
+    <Compile Include="Areas\Services\IWordDocumentService.cs" />
     <Compile Include="Infrastructure\Ioc\ApplicationRegistry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

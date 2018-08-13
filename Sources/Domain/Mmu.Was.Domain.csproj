@@ -62,6 +62,7 @@
     <Compile Include="Areas\Word\Graphic.cs" />
     <Compile Include="Areas\Word\IElementWithCaption.cs" />
     <Compile Include="Areas\Word\Table.cs" />
+    <Compile Include="Areas\Word\Word.cs" />
     <Compile Include="Areas\Word\WordDocument.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

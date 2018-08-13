@@ -1,11 +1,6 @@
 ﻿using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.Commands;
 using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Models;
 using StructureMap;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Mmu.Was.WpfUI.Infrastructure.Ioc
 {

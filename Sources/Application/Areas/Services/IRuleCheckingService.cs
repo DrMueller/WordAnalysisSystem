@@ -1,14 +1,11 @@
-﻿using Mmu.Was.Application.Areas.Dtos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Mmu.Was.Application.Areas.Dtos;
 
-namespace Mmu.Was.Application.Areas.RuleChecking
+namespace Mmu.Was.Application.Areas.Services
 {
     public interface IRuleCheckingService
     {
-        IReadOnlyCollection<RuleCheckResultDto> CheckRules(string wordFilePath);
+        Task<IReadOnlyCollection<RuleCheckResultDto>> CheckRulesAsync(string wordFilePath);
     }
 }

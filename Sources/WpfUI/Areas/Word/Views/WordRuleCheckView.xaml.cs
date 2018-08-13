@@ -1,24 +1,11 @@
-﻿using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.Views.Models;
+﻿using System.Windows.Controls;
+using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.Views.Models;
 using Mmu.Was.WpfUI.Areas.Word.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Mmu.Was.WpfUI.Areas.Word.Views
 {
     /// <summary>
-    /// Interaction logic for WordRuleCheckView.xaml
+    ///     Interaction logic for WordRuleCheckView.xaml
     /// </summary>
     public partial class WordRuleCheckView : UserControl, IViewMap<WordRuleCheckViewModel>
     {

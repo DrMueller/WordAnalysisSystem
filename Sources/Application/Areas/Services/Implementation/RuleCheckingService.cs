@@ -1,42 +1,47 @@
-﻿using Mmu.Was.Application.Areas.Dtos;
-using Mmu.Was.Application.Areas.RuleChecking;
-using Mmu.Was.Domain.Areas;
-using Mmu.Was.Domain.Areas.Rulings;
-using Mmu.Was.DomainServices.Areas.Services;
-using Mmu.Was.DomainServices.Areas.Services.RuleChecks;
-using Mmu.Was.DomainServices.Repositories;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using Mmu.Mlh.ApplicationExtensions.Areas.InformationHandling.Models;
+using Mmu.Mlh.ApplicationExtensions.Areas.InformationHandling.Services;
+using Mmu.Was.Application.Areas.Dtos;
+using Mmu.Was.DomainServices.Areas.Services;
 
 namespace Mmu.Was.Application.Areas.Services.Implementation
 {
     public class RuleCheckingService : IRuleCheckingService
     {
-        private readonly IWordDocumentRepository _wordDocumentRepository;
+        private readonly IInformationPublishingService _informationPublishingService;
+
         private readonly IRuleCheckService _ruleCheckService;
 
+        private readonly IWordDocumentService _wordDocumentService;
+
         public RuleCheckingService(
-            IWordDocumentRepository wordDocumentRepository,
-            IRuleCheckService ruleCheckService)
+            IRuleCheckService ruleCheckService,
+            IInformationPublishingService informationPublishingService,
+            IWordDocumentService wordDocumentService)
         {
-            _wordDocumentRepository = wordDocumentRepository;
             _ruleCheckService = ruleCheckService;
+            _informationPublishingService = informationPublishingService;
+            _wordDocumentService = wordDocumentService;
         }
 
-        public IReadOnlyCollection<RuleCheckResultDto> CheckRules(string wordFilePath)
+        public async Task<IReadOnlyCollection<RuleCheckResultDto>> CheckRulesAsync(string wordFilePath)
         {
-            var checkResults = _ruleCheckService.CheckRules(wordFilePath);
+            _informationPublishingService.Publish(InformationEntry.CreateInfo("Clearing Word instances..", true));
+            _wordDocumentService.ClearWordDocumentInstances();
 
-            var result = checkResults.Select(rs => new RuleCheckResultDto
-            {
-                Details = rs.Details.Report,
-                ResultOverview = rs.ResultOverview,
-                RuleCheckPassed = rs.RuleCheckPassed,
-                RuleName = rs.RuleName
-            }).ToList();
+            _informationPublishingService.Publish(InformationEntry.CreateInfo("Checking Rules..", true));
+            var checkResults = await _ruleCheckService.CheckRulesAsync(wordFilePath);
+
+            var result = checkResults.Select(
+                rs => new RuleCheckResultDto
+                {
+                    Details = rs.Details.Report,
+                    ResultOverview = rs.ResultOverview,
+                    RuleCheckPassed = rs.RuleCheckPassed,
+                    RuleName = rs.RuleName
+                }).ToList();
 
             return result;
         }

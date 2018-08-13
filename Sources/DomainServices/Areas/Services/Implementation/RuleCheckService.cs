@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Mmu.Was.Domain.Areas;
 using Mmu.Was.Domain.Areas.Rulings;
+using Mmu.Was.DomainServices.Areas.Repositories;
 using Mmu.Was.DomainServices.Areas.Services.RuleChecks;
-using Mmu.Was.DomainServices.Repositories;
 
 namespace Mmu.Was.DomainServices.Areas.Services.Implementation
 {
     public class RuleCheckService : IRuleCheckService
     {
-        private readonly IWordDocumentRepository _wordDocumentRepository;
         private readonly IForbiddenWordsRuleCheckService _forbiddenWordsRuleCheckservice;
+
+        private readonly IWordDocumentRepository _wordDocumentRepository;
 
         public RuleCheckService(
             IWordDocumentRepository wordDocumentRepository,
@@ -23,9 +20,9 @@ namespace Mmu.Was.DomainServices.Areas.Services.Implementation
             _forbiddenWordsRuleCheckservice = forbiddenWordsRuleCheckservice;
         }
 
-        public IReadOnlyCollection<RuleCheckResult> CheckRules(string wordFilePath)
+        public async Task<IReadOnlyCollection<RuleCheckResult>> CheckRulesAsync(string wordFilePath)
         {
-            var wordDocument = _wordDocumentRepository.Load(wordFilePath);
+            var wordDocument = await _wordDocumentRepository.LoadAsync(wordFilePath);
 
             var result = new List<RuleCheckResult>
             {

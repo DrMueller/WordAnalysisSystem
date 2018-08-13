@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Mmu.Was.Domain.Areas.Rulings
+﻿namespace Mmu.Was.Domain.Areas.Rulings
 {
     public class RuleCheckResult
     {
@@ -16,11 +10,11 @@ namespace Mmu.Was.Domain.Areas.Rulings
             Details = details;
         }
 
-        public static RuleCheckResult CreatePassed(string ruleName) => new RuleCheckResult(true, ruleName, string.Empty, RuleCheckResultDetails.CreateEmpty());
-
+        public RuleCheckResultDetails Details { get; }
+        public string ResultOverview { get; }
         public bool RuleCheckPassed { get; }
         public string RuleName { get; }
-        public string ResultOverview { get; }
-        public RuleCheckResultDetails Details { get; }
+
+        public static RuleCheckResult CreatePassed(string ruleName) => new RuleCheckResult(true, ruleName, string.Empty, RuleCheckResultDetails.CreateEmpty());
     }
 }

@@ -1,14 +1,11 @@
-﻿using Mmu.Was.Domain.Areas.Rulings;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Mmu.Was.Domain.Areas.Rulings;
 
 namespace Mmu.Was.DomainServices.Areas.Services
 {
     public interface IRuleCheckService
     {
-        IReadOnlyCollection<RuleCheckResult> CheckRules(string wordFilePath);
+        Task<IReadOnlyCollection<RuleCheckResult>> CheckRulesAsync(string wordFilePath);
     }
 }

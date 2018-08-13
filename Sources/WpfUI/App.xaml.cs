@@ -1,12 +1,6 @@
-﻿using Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection.Models;
+﻿using System.Windows;
+using Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection.Models;
 using Mmu.Mlh.WpfExtensions.Areas.Initialization;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace Mmu.Was.WpfUI
 {

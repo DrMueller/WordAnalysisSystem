@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
-using Mmu.Was.Domain.Areas;
 using Mmu.Was.Domain.Areas.Rulings;
 using Mmu.Was.Domain.Areas.Word;
 
@@ -14,19 +14,25 @@ namespace Mmu.Was.DomainServices.Areas.Services.RuleChecks.Implementation
         {
             var foundForbiddenWordsReport = new List<string>();
 
-            foreach(var forbiddenWord in forbiddenWords.Words)
+            foreach (var forbiddenWord in forbiddenWords.Words)
             {
-                var foundForbiddenWords = wordDocument.FindWord(forbiddenWord);
-                if ( foundForbiddenWords.Any())
+                var foundForbiddenWords = wordDocument
+                    .Words
+                    .Where(word => word.Text.ToUpper(CultureInfo.InvariantCulture) == forbiddenWord.ToUpper(CultureInfo.InvariantCulture))
+                    .ToList();
+
+                if (foundForbiddenWords.Any())
                 {
-                    foundForbiddenWordsReport.Add($"Word { forbiddenWord } was found { foundForbiddenWords.Count() } times.");
+                    foundForbiddenWordsReport.Add($"{foundForbiddenWords.Count}: {forbiddenWord}.");
                 }
             }
-            
+
             if (foundForbiddenWordsReport.Any())
             {
-                var overviewMessage = $"Found { foundForbiddenWordsReport.Count } forbidden Words.";
-                return new RuleCheckResult(false, RuleName, overviewMessage, new RuleCheckResultDetails(foundForbiddenWordsReport));
+                var overviewMessage = $"Found {foundForbiddenWordsReport.Count} forbidden Words.";
+                var sorted = foundForbiddenWordsReport.OrderBy(word => word).ToList();
+
+                return new RuleCheckResult(false, RuleName, overviewMessage, new RuleCheckResultDetails(sorted));
             }
 
             return RuleCheckResult.CreatePassed(RuleName);
