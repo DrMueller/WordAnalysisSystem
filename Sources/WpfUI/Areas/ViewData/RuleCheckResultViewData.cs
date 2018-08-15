@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Text;
 
-namespace Mmu.Was.WpfUI.Areas.Word.ViewData
+namespace Mmu.Was.WpfUI.Areas.ViewData
 {
     public class RuleCheckResultViewData
     {

@@ -1,11 +1,15 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 using Mmu.Mlh.ApplicationExtensions.Areas.InformationHandling.Models;
 using Mmu.Mlh.ApplicationExtensions.Areas.InformationHandling.Services;
 using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.Commands;
+using Mmu.Mlh.WpfExtensions.Areas.ViewExtensions.Components.CommandBars.ViewData;
 using Mmu.Mlh.WpfExtensions.Areas.ViewExtensions.Dialogs.FileDialogs.Services;
-using Mmu.Was.WpfUI.Areas.Word.Services;
+using Mmu.Was.WpfUI.Areas.Services;
 
-namespace Mmu.Was.WpfUI.Areas.Word.ViewModels.ViewModelCommands
+namespace Mmu.Was.WpfUI.Areas.ViewModels.ViewModelCommands
 {
     public class WordRuleCheckViewModelCommands : IViewModelCommandContainer<WordRuleCheckViewModel>
     {
@@ -26,20 +30,23 @@ namespace Mmu.Was.WpfUI.Areas.Word.ViewModels.ViewModelCommands
             _informationPublishingService = informationPublishingService;
         }
 
-        public ViewModelCommand CheckWordDocument
+        public CommandsViewData Commands => new CommandsViewData(
+            new List<ViewModelCommand>
+            {
+                CheckWordDocument
+            });
+
+        public ICommand CopyReportEntry
         {
             get
             {
-                return new ViewModelCommand(
-                    "Check document",
-                    new RelayCommand(
-                        async () =>
-                        {
-                            _ruleCheckInProgress = true;
-                            _context.RuleCheckResults = await _ruleCheckingService.CheckRulesAsync(_context.WordFilePath);
-                            _ruleCheckInProgress = false;
-                        },
-                        () => !string.IsNullOrEmpty(_context.WordFilePath) && !_ruleCheckInProgress));
+                return new RelayCommand(
+                    () =>
+                    {
+                        Clipboard.SetText(_context.SelectedEntry.ResultOverview);
+                        _informationPublishingService.Publish(InformationEntry.CreateSuccess("Copied to Clipboard.", false));
+                    },
+                    () => _context.SelectedEntry != null);
             }
         }
 
@@ -61,19 +68,22 @@ namespace Mmu.Was.WpfUI.Areas.Word.ViewModels.ViewModelCommands
             }
         }
 
-        public ViewModelCommand TestInfo
+        private ViewModelCommand CheckWordDocument
         {
             get
             {
                 return new ViewModelCommand(
-                    "Test Info",
+                    "Check document",
                     new RelayCommand(
                         async () =>
                         {
-                            _informationPublishingService.Publish(InformationEntry.CreateInfo("Loading..", true));
-                            await Task.Delay(10000);
-                            _informationPublishingService.Publish(InformationEntry.CreateSuccess("Finished", false));
-                        }));
+                            _ruleCheckInProgress = true;
+                            _informationPublishingService.Publish(InformationEntry.CreateInfo("Checking rules..", true));
+                            _context.RuleCheckResults = await _ruleCheckingService.CheckRulesAsync(_context.WordFilePath);
+                            _informationPublishingService.Publish(InformationEntry.CreateInfo("Rules checked", false, 5));
+                            _ruleCheckInProgress = false;
+                        },
+                        () => !string.IsNullOrEmpty(_context.WordFilePath) && !_ruleCheckInProgress));
             }
         }
 

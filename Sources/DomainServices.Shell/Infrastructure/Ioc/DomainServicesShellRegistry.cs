@@ -1,5 +1,7 @@
 ﻿using Mmu.Was.DomainServices.Areas.Repositories;
+using Mmu.Was.DomainServices.Areas.Services;
 using Mmu.Was.DomainServices.Shell.Areas.Repositories;
+using Mmu.Was.DomainServices.Shell.Areas.Services;
 using StructureMap;
 
 namespace Mmu.Was.DomainServices.Shell.Infrastructure.Ioc
@@ -16,6 +18,7 @@ namespace Mmu.Was.DomainServices.Shell.Infrastructure.Ioc
                 });
 
             For<IWordDocumentRepository>().Use<WordDocumentRepository>();
+            For<IUriCheckService>().Use<UriCheckService>();
         }
     }
 }

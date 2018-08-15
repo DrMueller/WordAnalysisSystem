@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Mmu.Was.WpfUI.Areas.Word.ViewData;
+using Mmu.Was.WpfUI.Areas.ViewData;
 
-namespace Mmu.Was.WpfUI.Areas.Word.Services.Implementation
+namespace Mmu.Was.WpfUI.Areas.Services.Implementation
 {
     public class RuleCheckingService : IRuleCheckingService
     {

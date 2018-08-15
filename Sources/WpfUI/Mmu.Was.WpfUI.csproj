@@ -51,22 +51,23 @@
     <Reference Include="MaterialDesignThemes.Wpf, Version=2.4.0.1044, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MaterialDesignThemes.2.4.0.1044\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
-    <Reference Include="Mmu.Mlh.ApplicationExtensions, Version=1.0.33.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Mmu.Mlh.ApplicationExtensions.1.0.33\lib\netstandard2.0\Mmu.Mlh.ApplicationExtensions.dll</HintPath>
+    <Reference Include="Mmu.Mlh.ApplicationExtensions, Version=1.0.34.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Mmu.Mlh.ApplicationExtensions.1.0.34\lib\netstandard2.0\Mmu.Mlh.ApplicationExtensions.dll</HintPath>
     </Reference>
     <Reference Include="Mmu.Mlh.LanguageExtensions, Version=1.2.14.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Mmu.Mlh.LanguageExtensions.1.2.14\lib\netstandard2.0\Mmu.Mlh.LanguageExtensions.dll</HintPath>
     </Reference>
-    <Reference Include="Mmu.Mlh.WpfExtensions, Version=1.0.22.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Mmu.Mlh.WpfExtensions.1.0.22\lib\net47\Mmu.Mlh.WpfExtensions.dll</HintPath>
-      <Private>True</Private>
-      <Private>True</Private>
+    <Reference Include="Mmu.Mlh.WpfExtensions, Version=1.0.24.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Mmu.Mlh.WpfExtensions.1.0.24\lib\net47\Mmu.Mlh.WpfExtensions.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\..\packages\NLog.5.0.0-beta11\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="office, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="StructureMap, Version=4.6.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\StructureMap.4.6.1\lib\net45\StructureMap.dll</HintPath>
@@ -97,11 +98,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Areas\Word\Views\WordRuleCheckView.xaml">
+    <Page Include="Areas\Views\WordRuleCheckView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Areas\Word\Views\WordRuleCheckViewDict.xaml">
+    <Page Include="Areas\Views\WordRuleCheckViewDict.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -113,12 +114,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Areas\Word\Services\Implementation\RuleCheckingService.cs" />
-    <Compile Include="Areas\Word\Services\IRuleCheckingService.cs" />
-    <Compile Include="Areas\Word\ViewData\RuleCheckResultViewData.cs" />
-    <Compile Include="Areas\Word\ViewModels\ViewModelCommands\WordRuleCheckViewModelCommands.cs" />
-    <Compile Include="Areas\Word\ViewModels\WordRuleCheckViewModel.cs" />
-    <Compile Include="Areas\Word\Views\WordRuleCheckView.xaml.cs">
+    <Compile Include="Areas\Services\Implementation\RuleCheckingService.cs" />
+    <Compile Include="Areas\Services\IRuleCheckingService.cs" />
+    <Compile Include="Areas\ViewData\RuleCheckResultViewData.cs" />
+    <Compile Include="Areas\ViewModels\ViewModelCommands\WordRuleCheckViewModelCommands.cs" />
+    <Compile Include="Areas\ViewModels\WordRuleCheckViewModel.cs" />
+    <Compile Include="Areas\Views\WordRuleCheckView.xaml.cs">
       <DependentUpon>WordRuleCheckView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Ioc\WpfUiRegistry.cs" />
@@ -129,7 +130,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
-      <SubType>Code</SubType>
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -179,15 +180,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Rulings\ViewModels\ViewModelCommands\" />
-    <Folder Include="Areas\Rulings\Views\" />
+    <Resource Include="Infrastructure\Assets\M.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Infrastructure\Assets\FA_Ok.png" />
     <Resource Include="Infrastructure\Assets\FA_Warn.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Infrastructure\Assets\M.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

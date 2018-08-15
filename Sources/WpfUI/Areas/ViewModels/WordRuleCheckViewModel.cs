@@ -1,29 +1,30 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.Commands;
 using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Behaviors;
 using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Models;
-using Mmu.Was.WpfUI.Areas.Word.ViewData;
-using Mmu.Was.WpfUI.Areas.Word.ViewModels.ViewModelCommands;
+using Mmu.Mlh.WpfExtensions.Areas.ViewExtensions.Components.CommandBars.ViewData;
+using Mmu.Was.WpfUI.Areas.ViewData;
+using Mmu.Was.WpfUI.Areas.ViewModels.ViewModelCommands;
 
-namespace Mmu.Was.WpfUI.Areas.Word.ViewModels
+namespace Mmu.Was.WpfUI.Areas.ViewModels
 {
     public class WordRuleCheckViewModel : ViewModelBase, IMainNavigationViewModel, IViewModelWithHeading, IInitializableViewModel
     {
-        private readonly WordRuleCheckViewModelCommands _commands;
+        private readonly WordRuleCheckViewModelCommands _commandsContainer;
 
         private IReadOnlyCollection<RuleCheckResultViewData> _ruleCheckResults;
 
         private string _wordFilePath;
 
-        public WordRuleCheckViewModel(WordRuleCheckViewModelCommands commands) => _commands = commands;
+        public WordRuleCheckViewModel(WordRuleCheckViewModelCommands commandsContainer) => _commandsContainer = commandsContainer;
 
-        public ViewModelCommand CheckWordDocument => _commands.CheckWordDocument;
+        public CommandsViewData Commands => _commandsContainer.Commands;
+        public ICommand CopyReportEntry => _commandsContainer.CopyReportEntry;
         public string HeadingText => "Word check";
         public string NavigationDescription => "Word check";
         public int NavigationSequence => 1;
-
-        public ViewModelCommand TestInfo => _commands.TestInfo;
 
         public IReadOnlyCollection<RuleCheckResultViewData> RuleCheckResults
         {
@@ -35,7 +36,8 @@ namespace Mmu.Was.WpfUI.Areas.Word.ViewModels
             }
         }
 
-        public ViewModelCommand SearchWordDocument => _commands.SearchWordDocument;
+        public ViewModelCommand SearchWordDocument => _commandsContainer.SearchWordDocument;
+        public RuleCheckResultViewData SelectedEntry { get; set; }
 
         public string WordFilePath
         {
@@ -49,7 +51,7 @@ namespace Mmu.Was.WpfUI.Areas.Word.ViewModels
 
         public async Task InitializeAsync()
         {
-            await _commands.InitializeAsync(this);
+            await _commandsContainer.InitializeAsync(this);
         }
     }
 }

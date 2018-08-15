@@ -11,7 +11,7 @@ namespace Mmu.Was.WpfUI
             var appIcon = WpfUI.Properties.Resources.M;
             var assemblyParameters = AssemblyParameters.CreateFromAssembly(typeof(App).Assembly);
 
-            var appConfig = ApplicationConfiguration.CreateFromIcon("WAS", appIcon);
+            var appConfig = ApplicationConfiguration.CreateFromIcon("Word Analysis System", appIcon);
             await BootstrapService.StartUpAsync(assemblyParameters, appConfig);
         }
     }

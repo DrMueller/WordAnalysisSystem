@@ -8,20 +8,23 @@ namespace Mmu.Was.Domain.Areas.Word
         public WordDocument(
             IReadOnlyCollection<Word> words,
             IReadOnlyCollection<Table> tables,
-            IReadOnlyCollection<Graphic> graphics
+            IReadOnlyCollection<Shape> shapes,
+            IReadOnlyCollection<Hyperlink> hyperLinks
         )
         {
             Guard.ObjectNotNull(() => words);
-
-            ////Guard.ObjectNotNull(() => tables);
-            ////Guard.ObjectNotNull(() => graphics);
+            Guard.ObjectNotNull(() => tables);
+            Guard.ObjectNotNull(() => shapes);
+            Guard.ObjectNotNull(() => hyperLinks);
 
             Words = words;
             Tables = tables;
-            Graphics = graphics;
+            Shapes = shapes;
+            HyperLinks = hyperLinks;
         }
 
-        public IReadOnlyCollection<Graphic> Graphics { get; }
+        public IReadOnlyCollection<Hyperlink> HyperLinks { get; }
+        public IReadOnlyCollection<Shape> Shapes { get; }
         public IReadOnlyCollection<Table> Tables { get; }
         public IReadOnlyCollection<Word> Words { get; }
     }

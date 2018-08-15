@@ -55,6 +55,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Areas\Repositories\WordDocumentRepository.cs" />
+    <Compile Include="Areas\Repositories\Servants\Implementation\WordDocumentHyperlinksServant.cs" />
+    <Compile Include="Areas\Repositories\Servants\Implementation\WordDocumentShapesServant.cs" />
+    <Compile Include="Areas\Repositories\Servants\Implementation\WordDocumentWordsServant.cs" />
+    <Compile Include="Areas\Repositories\Servants\Implementation\WordDocumentTablesServant.cs" />
+    <Compile Include="Areas\Repositories\Servants\Implementation\WordDocumentTextServant.cs" />
+    <Compile Include="Areas\Repositories\Servants\IWordDocumentHyperlinksServant.cs" />
+    <Compile Include="Areas\Repositories\Servants\IWordDocumentTablesServant.cs" />
+    <Compile Include="Areas\Repositories\Servants\IWordDocumentShapesServant.cs" />
+    <Compile Include="Areas\Repositories\Servants\IWordDocumentWordsServant.cs" />
+    <Compile Include="Areas\Repositories\Servants\IWordDocumentTextServant.cs" />
+    <Compile Include="Areas\Services\Servants\HeadWebClient.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Areas\Services\UriCheckService.cs" />
     <Compile Include="Infrastructure\Ioc\DomainServicesShellRegistry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,4 +1,5 @@
-﻿using StructureMap;
+﻿using Mmu.Was.DomainServices.Areas.Services.RuleChecks;
+using StructureMap;
 
 namespace Mmu.Was.DomainServices.Infrastructure.Ioc
 {
@@ -11,6 +12,8 @@ namespace Mmu.Was.DomainServices.Infrastructure.Ioc
                 {
                     scanner.AssemblyContainingType(typeof(DomainServicesRegistry));
                     scanner.WithDefaultConventions();
+
+                    scanner.AddAllTypesOf<IRuleCheck>();
                 });
         }
     }

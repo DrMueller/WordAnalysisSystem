@@ -58,8 +58,20 @@
   <ItemGroup>
     <Compile Include="Areas\Services\Implementation\RuleCheckService.cs" />
     <Compile Include="Areas\Services\IRuleCheckService.cs" />
-    <Compile Include="Areas\Services\RuleChecks\Implementation\ForbiddenWordsRuleCheckService.cs" />
-    <Compile Include="Areas\Services\RuleChecks\IForbiddenWordsRuleCheckService.cs" />
+    <Compile Include="Areas\Services\IUriCheckService.cs" />
+    <Compile Include="Areas\Services\RuleChecks\Implementation\GlossaryWordsAreUsedRuleCheck.cs" />
+    <Compile Include="Areas\Services\RuleChecks\Implementation\LinksAreValidRuleCheck.cs" />
+    <Compile Include="Areas\Services\RuleChecks\Implementation\ShapeCaptionsHaveExternalLinkIdRuleCheck.cs" />
+    <Compile Include="Areas\Services\RuleChecks\Servants\ICaptionsExistRuleCheckServant.cs" />
+    <Compile Include="Areas\Services\RuleChecks\Servants\ICaptionsAreSortedRuleCheckServant.cs" />
+    <Compile Include="Areas\Services\RuleChecks\Implementation\ShapeCaptionsExistRuleCheck.cs" />
+    <Compile Include="Areas\Services\RuleChecks\Implementation\NoForbiddenWordsRuleCheck.cs" />
+    <Compile Include="Areas\Services\RuleChecks\Implementation\TableCaptionsExistRuleCheck.cs" />
+    <Compile Include="Areas\Services\RuleChecks\Implementation\ShapeCaptionsAreSortedRuleCheck.cs" />
+    <Compile Include="Areas\Services\RuleChecks\Implementation\TableCaptionsAreSortedRuleCheck.cs" />
+    <Compile Include="Areas\Services\RuleChecks\IRuleCheck.cs" />
+    <Compile Include="Areas\Services\RuleChecks\Servants\Implementation\CaptionsAreSortedRuleCheckServant.cs" />
+    <Compile Include="Areas\Services\RuleChecks\Servants\Implementation\CaptionsExistRuleCheckServant.cs" />
     <Compile Include="Infrastructure\Ioc\DomainServicesRegistry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Areas\Repositories\IWordDocumentRepository.cs" />
