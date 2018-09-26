@@ -6,14 +6,6 @@ namespace Mmu.Was.WpfUI.Areas.ViewData
 {
     public class RuleCheckResultViewData
     {
-        public RuleCheckResultViewData(bool rulePassed, string ruleName, string resultOverview, IReadOnlyCollection<string> details)
-        {
-            RulePassed = rulePassed;
-            RuleName = ruleName;
-            ResultOverview = CreateOverviewMessage(resultOverview, details);
-            Details = details;
-        }
-
         public IReadOnlyCollection<string> Details { get; }
         public string ResultOverview { get; }
         public string RuleName { get; }
@@ -30,6 +22,14 @@ namespace Mmu.Was.WpfUI.Areas.ViewData
 
                 return "/Mmu.Was.WpfUI;component/Infrastructure/Assets/FA_Warn.png";
             }
+        }
+
+        public RuleCheckResultViewData(bool rulePassed, string ruleName, string resultOverview, IReadOnlyCollection<string> details)
+        {
+            RulePassed = rulePassed;
+            RuleName = ruleName;
+            ResultOverview = CreateOverviewMessage(resultOverview, details);
+            Details = details;
         }
 
         private static string CreateOverviewMessage(string resultOverview, IReadOnlyCollection<string> details)

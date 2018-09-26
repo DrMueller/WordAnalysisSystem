@@ -1,17 +1,19 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using Mmu.Mlh.WordAccess.Areas.Models;
 using Mmu.Was.Domain.Areas.Rulings;
-using Mmu.Was.Domain.Areas.Word;
 
 namespace Mmu.Was.DomainServices.Areas.Services.RuleChecks.Implementation
 {
     public class LinksAreValidRuleCheck : IRuleCheck
     {
         private const string RuleName = "Links are valid";
-
         private readonly IUriCheckService _uriCheckService;
 
-        public LinksAreValidRuleCheck(IUriCheckService uriCheckService) => _uriCheckService = uriCheckService;
+        public LinksAreValidRuleCheck(IUriCheckService uriCheckService)
+        {
+            _uriCheckService = uriCheckService;
+        }
 
         public async Task<RuleCheckResult> CheckRuleAsync(WordDocument wordDocument)
         {

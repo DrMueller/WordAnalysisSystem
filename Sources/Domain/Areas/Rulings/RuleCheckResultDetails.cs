@@ -4,10 +4,16 @@ namespace Mmu.Was.Domain.Areas.Rulings
 {
     public class RuleCheckResultDetails
     {
-        public RuleCheckResultDetails(IReadOnlyCollection<string> report) => Report = report;
-
         public IReadOnlyCollection<string> Report { get; }
 
-        public static RuleCheckResultDetails CreateEmpty() => new RuleCheckResultDetails(new List<string>());
+        public RuleCheckResultDetails(IReadOnlyCollection<string> report)
+        {
+            Report = report;
+        }
+
+        public static RuleCheckResultDetails CreateEmpty()
+        {
+            return new RuleCheckResultDetails(new List<string>());
+        }
     }
 }

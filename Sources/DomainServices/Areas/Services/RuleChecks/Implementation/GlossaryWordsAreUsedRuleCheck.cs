@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Mmu.Mlh.WordAccess.Areas.Models;
 using Mmu.Was.Domain.Areas.Rulings;
-using Mmu.Was.Domain.Areas.Word;
 
 namespace Mmu.Was.DomainServices.Areas.Services.RuleChecks.Implementation
 {

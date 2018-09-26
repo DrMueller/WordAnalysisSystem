@@ -9,7 +9,10 @@ namespace Mmu.Was.WpfUI.Areas.Services.Implementation
     {
         private readonly Application.Areas.Services.IRuleCheckingService _ruleCheckingService;
 
-        public RuleCheckingService(Application.Areas.Services.IRuleCheckingService ruleCheckingService) => _ruleCheckingService = ruleCheckingService;
+        public RuleCheckingService(Application.Areas.Services.IRuleCheckingService ruleCheckingService)
+        {
+            _ruleCheckingService = ruleCheckingService;
+        }
 
         public async Task<IReadOnlyCollection<RuleCheckResultViewData>> CheckRulesAsync(string wordFilePath)
         {

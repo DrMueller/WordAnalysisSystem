@@ -59,14 +59,6 @@
     <Compile Include="Areas\Rulings\ForbiddenWords.cs" />
     <Compile Include="Areas\Rulings\RuleCheckResult.cs" />
     <Compile Include="Areas\Rulings\RuleCheckResultDetails.cs" />
-    <Compile Include="Areas\Word\Cell.cs" />
-    <Compile Include="Areas\Word\Hyperlink.cs" />
-    <Compile Include="Areas\Word\Sentence.cs" />
-    <Compile Include="Areas\Word\Shape.cs" />
-    <Compile Include="Areas\Word\IElementWithCaption.cs" />
-    <Compile Include="Areas\Word\Table.cs" />
-    <Compile Include="Areas\Word\Word.cs" />
-    <Compile Include="Areas\Word\WordDocument.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

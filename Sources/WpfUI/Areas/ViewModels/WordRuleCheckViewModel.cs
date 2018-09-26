@@ -13,13 +13,8 @@ namespace Mmu.Was.WpfUI.Areas.ViewModels
     public class WordRuleCheckViewModel : ViewModelBase, IMainNavigationViewModel, IViewModelWithHeading, IInitializableViewModel
     {
         private readonly WordRuleCheckViewModelCommands _commandsContainer;
-
         private IReadOnlyCollection<RuleCheckResultViewData> _ruleCheckResults;
-
         private string _wordFilePath;
-
-        public WordRuleCheckViewModel(WordRuleCheckViewModelCommands commandsContainer) => _commandsContainer = commandsContainer;
-
         public CommandsViewData Commands => _commandsContainer.Commands;
         public ICommand CopyReportEntry => _commandsContainer.CopyReportEntry;
         public string HeadingText => "Word check";
@@ -47,6 +42,11 @@ namespace Mmu.Was.WpfUI.Areas.ViewModels
                 _wordFilePath = value;
                 OnPropertyChanged();
             }
+        }
+
+        public WordRuleCheckViewModel(WordRuleCheckViewModelCommands commandsContainer)
+        {
+            _commandsContainer = commandsContainer;
         }
 
         public async Task InitializeAsync()

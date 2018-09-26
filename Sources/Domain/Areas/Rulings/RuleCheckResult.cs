@@ -2,6 +2,11 @@
 {
     public class RuleCheckResult
     {
+        public RuleCheckResultDetails Details { get; }
+        public string ResultOverview { get; }
+        public bool RuleCheckPassed { get; }
+        public string RuleName { get; }
+
         public RuleCheckResult(bool ruleCheckPassed, string ruleName, string resultOverview, RuleCheckResultDetails details)
         {
             RuleCheckPassed = ruleCheckPassed;
@@ -10,11 +15,9 @@
             Details = details;
         }
 
-        public RuleCheckResultDetails Details { get; }
-        public string ResultOverview { get; }
-        public bool RuleCheckPassed { get; }
-        public string RuleName { get; }
-
-        public static RuleCheckResult CreatePassed(string ruleName) => new RuleCheckResult(true, ruleName, string.Empty, RuleCheckResultDetails.CreateEmpty());
+        public static RuleCheckResult CreatePassed(string ruleName)
+        {
+            return new RuleCheckResult(true, ruleName, string.Empty, RuleCheckResultDetails.CreateEmpty());
+        }
     }
 }

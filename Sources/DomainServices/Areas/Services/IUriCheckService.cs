@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Mmu.Was.Domain.Areas.Word;
+using Mmu.Mlh.WordAccess.Areas.Models;
 
 namespace Mmu.Was.DomainServices.Areas.Services
 {

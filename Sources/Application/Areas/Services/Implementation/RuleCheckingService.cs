@@ -9,7 +9,6 @@ namespace Mmu.Was.Application.Areas.Services.Implementation
     public class RuleCheckingService : IRuleCheckingService
     {
         private readonly IRuleCheckService _ruleCheckService;
-
         private readonly IWordDocumentService _wordDocumentService;
 
         public RuleCheckingService(

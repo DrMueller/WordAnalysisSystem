@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Mmu.Mlh.WordAccess.Areas.Repositories;
 using Mmu.Was.Domain.Areas.Rulings;
-using Mmu.Was.DomainServices.Areas.Repositories;
 using Mmu.Was.DomainServices.Areas.Services.RuleChecks;
 
 namespace Mmu.Was.DomainServices.Areas.Services.Implementation
@@ -10,7 +10,6 @@ namespace Mmu.Was.DomainServices.Areas.Services.Implementation
     public class RuleCheckService : IRuleCheckService
     {
         private readonly IRuleCheck[] _ruleChecks;
-
         private readonly IWordDocumentRepository _wordDocumentRepository;
 
         public RuleCheckService(

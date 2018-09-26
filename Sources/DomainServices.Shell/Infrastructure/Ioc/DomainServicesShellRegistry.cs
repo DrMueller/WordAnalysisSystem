@@ -1,6 +1,4 @@
-﻿using Mmu.Was.DomainServices.Areas.Repositories;
-using Mmu.Was.DomainServices.Areas.Services;
-using Mmu.Was.DomainServices.Shell.Areas.Repositories;
+﻿using Mmu.Was.DomainServices.Areas.Services;
 using Mmu.Was.DomainServices.Shell.Areas.Services;
 using StructureMap;
 
@@ -17,8 +15,7 @@ namespace Mmu.Was.DomainServices.Shell.Infrastructure.Ioc
                     scanner.WithDefaultConventions();
                 });
 
-            For<IWordDocumentRepository>().Use<WordDocumentRepository>();
-            For<IUriCheckService>().Use<UriCheckService>();
+            For<IUriCheckService>().Use<UriCheckService>().Singleton();
         }
     }
 }

@@ -14,21 +14,10 @@ namespace Mmu.Was.WpfUI.Areas.ViewModels.ViewModelCommands
     public class WordRuleCheckViewModelCommands : IViewModelCommandContainer<WordRuleCheckViewModel>
     {
         private readonly IFileDialogService _fileDialogService;
-
         private readonly IInformationPublishingService _informationPublishingService;
-
         private readonly IRuleCheckingService _ruleCheckingService;
-
         private WordRuleCheckViewModel _context;
-
         private bool _ruleCheckInProgress;
-
-        public WordRuleCheckViewModelCommands(IFileDialogService fileDialogService, IRuleCheckingService ruleCheckingService, IInformationPublishingService informationPublishingService)
-        {
-            _fileDialogService = fileDialogService;
-            _ruleCheckingService = ruleCheckingService;
-            _informationPublishingService = informationPublishingService;
-        }
 
         public CommandsViewData Commands => new CommandsViewData(
             new List<ViewModelCommand>
@@ -85,6 +74,13 @@ namespace Mmu.Was.WpfUI.Areas.ViewModels.ViewModelCommands
                         },
                         () => !string.IsNullOrEmpty(_context.WordFilePath) && !_ruleCheckInProgress));
             }
+        }
+
+        public WordRuleCheckViewModelCommands(IFileDialogService fileDialogService, IRuleCheckingService ruleCheckingService, IInformationPublishingService informationPublishingService)
+        {
+            _fileDialogService = fileDialogService;
+            _ruleCheckingService = ruleCheckingService;
+            _informationPublishingService = informationPublishingService;
         }
 
         public Task InitializeAsync(WordRuleCheckViewModel context)
