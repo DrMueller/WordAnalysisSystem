@@ -16,7 +16,7 @@ namespace Mmu.Was.DomainServices.Areas.Services.RuleChecks.Implementation
             return await Task.Run(
                 () =>
                 {
-                    var shapesWithExternalLink = wordDocument.Shapes.Where(f => f.CaptionText.Contains("[PIC")).ToList();
+                    var shapesWithExternalLink = wordDocument.Shapes.Where(f => f.Caption.Entries.Any(e => e.CharacterRepresentation.Contains("[PIC"))).ToList();
 
                     var details = new List<string>();
 
@@ -24,9 +24,9 @@ namespace Mmu.Was.DomainServices.Areas.Services.RuleChecks.Implementation
                     {
                         var expectedPicLink = $"[PIC{i}]";
                         var currentItem = shapesWithExternalLink[i - 1];
-                        if (!currentItem.CaptionText.EndsWith(expectedPicLink, StringComparison.Ordinal))
+                        if (!currentItem.Caption.Entries.First().CharacterRepresentation.EndsWith(expectedPicLink, StringComparison.Ordinal))
                         {
-                            details.Add($"Expected {currentItem.CaptionText} to end with ${expectedPicLink}");
+                            details.Add($"Expected {currentItem.Caption.Entries.First().CharacterRepresentation} to end with ${expectedPicLink}");
                         }
                     }
 

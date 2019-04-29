@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mmu.Was.DomainServices", "S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mmu.Was.DomainServices.Shell", "Sources\DomainServices.Shell\Mmu.Was.DomainServices.Shell.csproj", "{049DF998-A2DB-46FE-A71F-3660074B54BA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mmu.Mlh.WordAccess", "..\MyLittleHelpers\WordAccess\Sources\Application\Mmu.Mlh.WordAccess.csproj", "{69545B00-955C-47C7-BE19-032F0A683E6C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{049DF998-A2DB-46FE-A71F-3660074B54BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{049DF998-A2DB-46FE-A71F-3660074B54BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{049DF998-A2DB-46FE-A71F-3660074B54BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69545B00-955C-47C7-BE19-032F0A683E6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69545B00-955C-47C7-BE19-032F0A683E6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69545B00-955C-47C7-BE19-032F0A683E6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69545B00-955C-47C7-BE19-032F0A683E6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

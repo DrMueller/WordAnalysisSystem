@@ -47,9 +47,6 @@
     <Reference Include="Mmu.Mlh.LanguageExtensions, Version=1.2.18.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Mmu.Mlh.LanguageExtensions.1.2.18\lib\netstandard2.0\Mmu.Mlh.LanguageExtensions.dll</HintPath>
     </Reference>
-    <Reference Include="Mmu.Mlh.WordAccess, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Mmu.Mlh.WordAccess.2.0.3\lib\net472\Mmu.Mlh.WordAccess.dll</HintPath>
-    </Reference>
     <Reference Include="StructureMap, Version=4.7.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\StructureMap.4.7.0\lib\net45\StructureMap.dll</HintPath>
     </Reference>
@@ -99,13 +96,14 @@
     <Analyzer Include="..\..\packages\Text.Analyzers.2.6.0\analyzers\dotnet\cs\Text.CSharp.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\MyLittleHelpers\WordAccess\Sources\Application\Mmu.Mlh.WordAccess.csproj">
+      <Project>{69545b00-955c-47c7-be19-032f0a683e6c}</Project>
+      <Name>Mmu.Mlh.WordAccess</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Domain\Mmu.Was.Domain.csproj">
       <Project>{c24504b3-16b8-4159-b7b6-6aa190787071}</Project>
       <Name>Mmu.Was.Domain</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Infrastructure\Assets\M.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

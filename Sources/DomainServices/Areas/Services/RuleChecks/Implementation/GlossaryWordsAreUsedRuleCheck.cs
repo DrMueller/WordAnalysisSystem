@@ -16,11 +16,11 @@ namespace Mmu.Was.DomainServices.Areas.Services.RuleChecks.Implementation
             return await Task.Run(
                 () =>
                 {
-                    var glossaryTable = wordDocument.Tables.Single(f => f.CaptionText.EndsWith("Glossar", StringComparison.Ordinal));
+                    var glossaryTable = wordDocument.Tables.Single(f => f.Caption.Entries.Any(e => e.CharacterRepresentation.EndsWith("Glossar", StringComparison.Ordinal)));
                     var glossaryWords = glossaryTable.Cells.Where(f => f.ColumnIndex == 1 && f.RowIndex > 1).Select(f => f.Value).ToList();
 
                     var wordsNotFound = new List<string>();
-                    var wordsCombined = string.Join(" ", wordDocument.Words.Select(word => word.Text));
+                    var wordsCombined = string.Join(" ", wordDocument.Select(word => word.Text));
 
                     foreach (var glossaryWord in glossaryWords)
                     {
